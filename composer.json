@@ -1,0 +1,49 @@
+{
+    "name": "jimenezmaximiliano/laravel-postman",
+    "type": "library",
+    "description": "Export laravel API routes to postman",
+    "keywords": [
+        "jimenezmaximiliano",
+        "laravel",
+        "postman",
+        "github",
+        "export",
+        "api"
+    ],
+    "homepage": "https://github.com/jimenezmaximiliano/laravel-postman",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Maximiliano Jimenez",
+            "email": "jimenez@maximiliano.com.ar",
+            "homepage": "http://maximiliano.com.ar",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "illuminate/support": "~5.1",
+        "php" : "~5.6|~7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit" : "~4.0||~5.0",
+        "scrutinizer/ocular": "~1.1",
+        "squizlabs/php_codesniffer": "~2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "JimenezMaximiliano\\LaravelPostman\\": "src"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "format": "phpcbf --standard=psr2 src/"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
