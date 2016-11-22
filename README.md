@@ -54,7 +54,7 @@ Add a property to your entity controller like this:
 
 `public $postmanModel = 'App\MyEntityModel';`
 
-### Assumtions
+### Assumptions
 
 For POST or PUT routes, this library will add a formdata metadata to the route with parameters in your model's fillable property
 
