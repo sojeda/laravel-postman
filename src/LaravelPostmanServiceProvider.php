@@ -29,7 +29,7 @@ class LaravelPostmanServiceProvider extends ServiceProvider
             return new Helper();
         });
         
-        $this->commands(LaravelPostmanCommand::class);
+        $this->commands('JimenezMaximiliano\LaravelPostman\LaravelPostmanCommand');
         
         $configFilePath = __DIR__ . '/../config/laravelPostman.php';
         $this->publishes([

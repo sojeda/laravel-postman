@@ -15,14 +15,14 @@ class LaravelPostmanCommand extends Command
      * @var string
      */
     protected $signature = 'laravelPostman:export';
+    protected $name = 'laravelPostman:export';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Exports Laravel API routes to a JSON file usign '
-            . 'Postman import format';
+    protected $description = 'Exports Laravel API routes to a JSON file usign Postman import format';
 
     /**
      * Create a new command instance.
@@ -78,7 +78,8 @@ class LaravelPostmanCommand extends Command
     {
         $baseURL = $this->helper->getBaseURL();
         $path = $this->helper->replaceGetParameters($route->getPath());
-        $routeName = !empty($route->getName()) ? $route->getName() : $path;
+        $routeName = $route->getName();
+        $routeNameFinal = !empty($routeName) ? $routeName : $path;
         $methods = $route->getMethods();
         $items = [];
         
@@ -90,7 +91,7 @@ class LaravelPostmanCommand extends Command
             }
             $body = $this->getBody($route, $method);
             $items[] = $this->getItemStructure(
-                    $routeName, 
+                    $routeNameFinal, 
                     $baseURL, 
                     $path, 
                     $method, 
@@ -178,7 +179,7 @@ class LaravelPostmanCommand extends Command
             
             $path = $route->getPath();
             if (substr($path, 0, $apiPrefixLength) !== $apiPrefix) {
-                $this->warn('Omiting ' . $path);
+                $this->info('Omiting ' . $path);
                 
                 continue;
             }

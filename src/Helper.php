@@ -5,8 +5,7 @@ namespace JimenezMaximiliano\LaravelPostman;
 class Helper
 {
     const CONTROLLER_STRING_INDEX = 0;
-    const POSTMAN_SCHEMA = 'https://schema.getpostman.com/json/collection/'
-            . 'v2.0.0/collection.json';
+    const POSTMAN_SCHEMA = 'https://schema.getpostman.com/json/collection/v2.0.0/collection.json';
     
     /**
      * Class constructor
