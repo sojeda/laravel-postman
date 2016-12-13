@@ -9,7 +9,11 @@ Install the package via composer
 
 Then add the service provider in config/app.php:
 
+PHP >= 5.5
 `JimenezMaximiliano\LaravelPostman\LaravelPostmanServiceProvider::class`
+
+PHP < 5.5
+`JimenezMaximiliano\LaravelPostman\LaravelPostmanServiceProvider`
 
 ## Configuration
 
