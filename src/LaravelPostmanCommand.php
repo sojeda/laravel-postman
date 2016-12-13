@@ -236,15 +236,12 @@ class LaravelPostmanCommand extends Command
             return [];
         }
         
-        if (!is_object($route->getController())
-                || !property_exists($route->getController(), 'postmanModel')) {
+        if (!$this->helper->canGetPostmanModel($route)) {
 
             return [];
         }
         
-        $postmanModelClass = $route->getController()->postmanModel;
-        
-        $postmanModel = new $postmanModelClass();
+        $postmanModel = $this->helper->getPostmanModel($route);
         
         if (!is_object($postmanModel) 
                 || !method_exists($postmanModel, 'getPostmanParams')) {

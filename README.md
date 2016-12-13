@@ -9,10 +9,12 @@ Install the package via composer
 
 Then add the service provider in config/app.php:
 
-PHP >= 5.5
+### PHP >= 5.5
+
 `JimenezMaximiliano\LaravelPostman\LaravelPostmanServiceProvider::class`
 
-PHP < 5.5
+### PHP < 5.5
+
 `JimenezMaximiliano\LaravelPostman\LaravelPostmanServiceProvider`
 
 ## Configuration
@@ -22,6 +24,7 @@ First, publish the package configuration file:
 `php artisan vendor:publish`
 
 Note: publishing the configuration file is optional, you can use de default package options.
+
 ### Options
 
 #### apiURL
@@ -52,16 +55,27 @@ default value: true
 #### exportDirectory
 The directory to which the postman.json file will be exported
 
+## Usage
+
 ### Configuring controllers
 
 Add a property to your entity controller like this:
 
 `public $postmanModel = 'App\MyEntityModel';`
 
-### Assumptions
+### Add a public method to your model class like this:
 
-For POST or PUT routes, this library will add a formdata metadata to the route with parameters in your model's fillable property
+`
+public function getPostmanParams()
+{
+    return $this->fillable;
+}
+`
 
-## Usage
+This array of params will be used to fill POST and PUT formdata section in 
+postman. The previous method is just an example, you should return the array of 
+params that you want to see in postman.
+
+### Export
 
 `php artisan laravelPostman:export`

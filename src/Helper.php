@@ -125,4 +125,62 @@ class Helper
         
         return $this->addTrailingSlash($exportDirectory);
     }
+    
+    /**
+     * Finds out if a postman model can be get from the route
+     * 
+     * @param Illuminate\Routing\Route $route
+     * @return boolean
+     */
+    public function canGetPostmanModel($route)
+    {
+        if (method_exists($route, 'getController') 
+                && is_object($route->getController())
+                && property_exists($route->getController(), 'postmanModel')) {
+            
+            return true;
+        }
+        
+        if (method_exists($route, 'getAction')
+                && is_array($route->getAction())
+                && in_array('controller', array_keys($route->getAction()))) {
+            
+            return true;
+        }
+        
+        return false;
+    }
+    
+    /**
+     * Returns a route's postman model
+     * 
+     * @param  Illuminate\Routing\Route $route
+     * @return object|null
+     */
+    public function getPostmanModel($route)
+    {
+        if (!$this->canGetPostmanModel($route)) {
+            
+            return null;
+        }
+        
+        if (method_exists($route, 'getController')) {
+            
+            $postmanModelClass = $route->getController()->postmanModel;
+        }
+        
+        $action = $route->getAction();
+        $controllerAction = explode('@', $action['controller']);
+        $controllerClass = $controllerAction[0];
+        $controller = app($controllerClass);
+        
+        if (!property_exists($controller, 'postmanModel')) {
+            
+            return null;
+        }
+        
+        $postmanModelClass = $controller->postmanModel;
+        
+        return new $postmanModelClass();
+    }
 }
