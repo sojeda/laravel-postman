@@ -72,7 +72,7 @@ public function getPostmanParams()
 }
 `
 
-This array of params will be used to fill POST and PUT formdata section in 
+This array of params will be used to fill POST and PUT urlencoded form data section in 
 postman. The previous method is just an example, you should return the array of 
 params that you want to see in postman.
 

@@ -210,10 +210,10 @@ class LaravelPostmanCommand extends Command
             return [];
         }
         
-        $body['mode'] = 'formdata';
-        $body['formdata'] = [];
+        $body['mode'] = 'urlencoded';
+        $body['urlencoded'] = [];
         foreach ($postmanParams as $param) {
-            $body['formdata'][] = [
+            $body['urlencoded'][] = [
                 'key' => $param,
                 'value' => '',
                 'enabled' => true,
