@@ -14,8 +14,8 @@ class LaravelPostmanCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'laravelPostman:export';
-    protected $name = 'laravelPostman:export';
+    protected $signature = 'postman:export';
+    protected $name = 'postman:export';
 
     /**
      * The console command description.
@@ -85,7 +85,7 @@ class LaravelPostmanCommand extends Command
         
         foreach ($methods as $method) {
 
-            if ($method === 'HEAD' && config('laravelPostman.skipHEAD', true)) {
+            if ($method === 'HEAD' && config('postman.skipHEAD', true)) {
                 
                 continue;
             }
@@ -136,7 +136,7 @@ class LaravelPostmanCommand extends Command
      */
     protected function getCollectionName()
     {
-        $configCollectionName = config('laravelPostman.collectionName');
+        $configCollectionName = config('postman.collectionName');
         
         if (!empty($configCollectionName)) {
             
@@ -153,7 +153,7 @@ class LaravelPostmanCommand extends Command
      */
     protected function getCollectionDescription()
     {
-        $configCollectionDescription = config('laravelPostman.collectionDescription');
+        $configCollectionDescription = config('postman.collectionDescription');
         
         if (!empty($configCollectionDescription)) {
             

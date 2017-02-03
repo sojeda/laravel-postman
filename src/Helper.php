@@ -43,7 +43,7 @@ class Helper
      */
     public function getBaseURL()
     {
-        $configURL = config('laravelPostman.apiURL');
+        $configURL = config('postman.apiURL');
         
         if (!empty($configURL)) {
             
@@ -60,7 +60,7 @@ class Helper
      */
     public function getApiPrefix()
     {
-        $apiPrefix = config('laravelPostman.apiPrefix');
+        $apiPrefix = config('postman.apiPrefix');
         
         return !empty($apiPrefix) ? $apiPrefix : 'api';
     }
@@ -116,7 +116,7 @@ class Helper
      */
     public function getExportDirectory()
     {
-        $exportDirectory = config('laravelPostman.exportDirectory');
+        $exportDirectory = config('postman.exportDirectory');
         
         if (empty($exportDirectory)) {
             
