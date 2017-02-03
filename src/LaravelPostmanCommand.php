@@ -77,10 +77,10 @@ class LaravelPostmanCommand extends Command
     protected function getRouteItems($route)
     {
         $baseURL = $this->helper->getBaseURL();
-        $path = $this->helper->replaceGetParameters($route->getPath());
+        $path = $this->helper->replaceGetParameters($route->uri());
         $routeName = $route->getName();
         $routeNameFinal = !empty($routeName) ? $routeName : $path;
-        $methods = $route->getMethods();
+        $methods = $route->methods();
         $items = [];
         
         foreach ($methods as $method) {
@@ -177,7 +177,7 @@ class LaravelPostmanCommand extends Command
         
         foreach (Route::getRoutes() as $route) {
             
-            $path = $route->getPath();
+            $path = $route->uri();
             if (substr($path, 0, $apiPrefixLength) !== $apiPrefix) {
                 $this->info('Omiting ' . $path);
                 
