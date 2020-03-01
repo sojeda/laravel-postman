@@ -24,16 +24,16 @@ class ServiceProvider extends LaravelServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('Phpsa\LaravelPostman\Helper', function($app)
-        {
+        $this->app->singleton('Phpsa\LaravelPostman\Helper', function ($app) {
             return new Helper();
         });
-        
+
         $this->commands('Phpsa\LaravelPostman\LaravelPostmanCommand');
-        
-        $configFilePath = __DIR__ . '/../config/laravelPostman.php';
+
+        $configFilePath = __DIR__ . '/../config/postman.php';
+
         $this->publishes([
-            $configFilePath => config_path('laravelPostman.php'),
+            $configFilePath => config_path('postman.php'),
         ]);
     }
 }
