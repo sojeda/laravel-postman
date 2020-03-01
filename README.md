@@ -1,27 +1,27 @@
 # laravel-postman
-This package allows you to export your API routes to a postman import json file
+This package allows you to export your API routes to a postman import json file, original work by https://github.com/sojeda/laravel-postman
 
 ## Installation
 
 Install the package via composer
 
-`composer require --dev jimenezmaximiliano/laravel-postman`
+`composer require --dev phpsa/laravel-postman`
 
 Then add the service provider in config/app.php:
 
 ### PHP >= 5.5
 
-`JimenezMaximiliano\LaravelPostman\LaravelPostmanServiceProvider::class`
+`Phpsa\LaravelPostman\ServiceProvider::class`
 
 ### PHP < 5.5
 
-`JimenezMaximiliano\LaravelPostman\LaravelPostmanServiceProvider`
+`Phpsa\LaravelPostman\ServiceProvider`
 
 ## Configuration
 
 First, publish the package configuration file:
 
-`php artisan vendor:publish`
+`php artisan vendor:publish --provider="Phpsa\LaravelPostman\ServiceProvider" --tag="config"`
 
 Note: publishing the configuration file is optional, you can use de default package options.
 
