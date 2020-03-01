@@ -1,11 +1,11 @@
 <?php
 
-namespace JimenezMaximiliano\LaravelPostman;
+namespace Phpsa\LaravelPostman;
 
-use Illuminate\Support\ServiceProvider;
-use JimenezMaximiliano\LaravelPostman\Helper;
+use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
+use Phpsa\LaravelPostman\Helper;
 
-class LaravelPostmanServiceProvider extends ServiceProvider
+class ServiceProvider extends LaravelServiceProvider
 {
     /**
      * Perform post-registration booting of services.
@@ -24,12 +24,12 @@ class LaravelPostmanServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('JimenezMaximiliano\LaravelPostman\Helper', function($app)
+        $this->app->singleton('Phpsa\LaravelPostman\Helper', function($app)
         {
             return new Helper();
         });
         
-        $this->commands('JimenezMaximiliano\LaravelPostman\LaravelPostmanCommand');
+        $this->commands('Phpsa\LaravelPostman\LaravelPostmanCommand');
         
         $configFilePath = __DIR__ . '/../config/laravelPostman.php';
         $this->publishes([
