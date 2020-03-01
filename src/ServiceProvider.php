@@ -7,6 +7,9 @@ use Phpsa\LaravelPostman\Helper;
 
 class ServiceProvider extends LaravelServiceProvider
 {
+
+    protected const CONFIG_PATH = __DIR__ . '/../config/postman.php';
+
     /**
      * Perform post-registration booting of services.
      *
@@ -14,7 +17,9 @@ class ServiceProvider extends LaravelServiceProvider
      */
     public function boot()
     {
-        //
+        $this->publishes([
+            self::CONFIG_PATH => config_path('postman.php'),
+        ], 'config');
     }
 
     /**
@@ -24,16 +29,16 @@ class ServiceProvider extends LaravelServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('Phpsa\LaravelPostman\Helper', function ($app) {
+
+        $this->mergeConfigFrom(
+            self::CONFIG_PATH,
+            'postman'
+        );
+
+        $this->app->singleton('Phpsa\LaravelPostman\Helper', static function ($app) {
             return new Helper();
         });
 
         $this->commands('Phpsa\LaravelPostman\LaravelPostmanCommand');
-
-        $configFilePath = __DIR__ . '/../config/postman.php';
-
-        $this->publishes([
-            $configFilePath => config_path('postman.php'),
-        ]);
     }
 }
