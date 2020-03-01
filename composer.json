@@ -1,18 +1,23 @@
 {
-    "name": "jimenezmaximiliano/laravel-postman",
+    "name": "phpsa/laravel-postman",
     "type": "library",
     "description": "Export laravel API routes to postman",
     "keywords": [
-        "jimenezmaximiliano",
         "laravel",
         "postman",
         "github",
         "export",
         "api"
     ],
-    "homepage": "https://github.com/jimenezmaximiliano/laravel-postman",
+    "homepage": "https://github.com/phpsa/laravel-postman",
     "license": "MIT",
     "authors": [
+        {
+            "name": "Craig Smith",
+            "email": "vxdhost@gmail.com",
+            "role" : "developer"
+            
+        },
         {
             "name": "Maximiliano Jimenez",
             "email": "jimenez@maximiliano.com.ar",
@@ -21,27 +26,28 @@
         }
     ],
     "require": {
-        "illuminate/support": "~5",
-        "illuminate/console": "~5",
-        "php" : ">=5.4"
+        "illuminate/support": "^6.0",
+        "php" : ">=7.1"
     },
     "require-dev": {
-        "phpunit/phpunit" : "~4.0||~5.0"
+        "phpunit/phpunit" : "^7.0||^8.0"
     },
     "autoload": {
         "psr-4": {
-            "JimenezMaximiliano\\LaravelPostman\\": "src"
+            "Phpsa\\LaravelPostman\\": "src"
         }
     },
     "scripts": {
         "test": "phpunit",
         "format": "phpcbf --standard=psr2 src/"
     },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.0-dev"
-        }
-    },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Phpsa\\LaravelPostman\\ServiceProvider"
+      ]
+    }
+  },
     "config": {
         "sort-packages": true
     }
