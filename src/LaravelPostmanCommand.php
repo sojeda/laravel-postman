@@ -1,6 +1,6 @@
 <?php
 
-namespace JimenezMaximiliano\LaravelPostman;
+namespace Phpsa\LaravelPostman;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Route;
