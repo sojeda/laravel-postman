@@ -1,6 +1,6 @@
 <?php
 
-namespace JimenezMaximiliano\LaravelPostman;
+namespace Phpsa\LaravelPostman;
 
 class Helper
 {
